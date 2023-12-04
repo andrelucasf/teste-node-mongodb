@@ -1,6 +1,6 @@
 # Teste Técnico Node.js + MongoDB
 
-Este projeto foi desenvolvido como parte de um teste técnico para uma empresa, que solicitou a implementação de uma aplicação Node.js utilizando Express, Mongoose (como ODM para MongoDB) e Jest para testes.
+Este projeto foi desenvolvido como parte de um teste técnico para uma empresa, que solicitou a implementação de uma aplicação Node.js utilizando Express, Mongoose e Jest para testes.
 
 ## Descrição do Projeto
 
@@ -10,7 +10,7 @@ O objetivo deste teste técnico é criar uma aplicação básica para gerenciar 
 
 - Node.js: Ambiente de execução para JavaScript no lado do servidor.
 - Express: Framework web para Node.js, utilizado para criar a API.
-- Mongoose: ODM (Object Data Modeling) para MongoDB, utilizado para modelar e interagir com os dados do banco de dados.
+- Mongoose: Utilizado para modelar e interagir com os dados do banco de dados.
 - MongoDB: Banco de dados NoSQL utilizado para armazenar os dados da aplicação.
 - Jest: Framework de teste para JavaScript, utilizado para testes automatizados.
 
@@ -59,6 +59,6 @@ Isso iniciará a execução dos testes definidos na pasta `tests` utilizando o J
 
 ## Documentação da API
 
-A documentação da API, gerada automaticamente a partir dos esquemas Swagger, está disponível em `http://localhost:3000/api-docs`.
+A documentação da API, gerada automaticamente a partir dos esquemas Swagger, está disponível em `http://localhost:3000/api/docs/`.
 
 Este projeto é uma implementação simples que atende aos requisitos do teste técnico. Qualquer sugestão ou melhoria é bem-vinda!
