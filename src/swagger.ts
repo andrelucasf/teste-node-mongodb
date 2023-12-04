@@ -139,6 +139,73 @@ const swaggerFile = {
         },
       },
     },
+    "/products/price": {
+      get: {
+        tags: ["products"],
+        summary: "Listar produtos com preço acima de um valor especificado",
+        description:
+          "Lista os produtos com preço acima de um valor especificado",
+        parameters: [
+          {
+            name: "minPrice",
+            in: "path",
+            required: true,
+            description: "Valor mínimo do preço",
+            schema: {
+              type: "number",
+              minimum: 0,
+            },
+          },
+        ],
+        responses: {
+          "200": {
+            description: "Sucess",
+          },
+          "400": {
+            description: "Bad Request",
+          },
+          "404": {
+            description: "Not Found",
+          },
+          "500": {
+            description: "Internal Server Error",
+          },
+        },
+      },
+    },
+    "/products/description": {
+      get: {
+        tags: ["products"],
+        summary: "Listar produtos por palavra-chave na descrição",
+        description:
+          "Lista os produtos contendo uma palavra-chave na descrição",
+        parameters: [
+          {
+            name: "keyword",
+            in: "path",
+            required: true,
+            description: "Palavra-chave na descrição",
+            schema: {
+              type: "string",
+            },
+          },
+        ],
+        responses: {
+          "200": {
+            description: "Sucess",
+          },
+          "400": {
+            description: "Bad Request",
+          },
+          "404": {
+            description: "Not Found",
+          },
+          "500": {
+            description: "Internal Server Error",
+          },
+        },
+      },
+    },
   },
 };
 

@@ -71,6 +71,33 @@ class ProductController {
         .json({ message: "Error deleting product", error: error.message });
     }
   }
+
+  async listProductsAbovePrice(req: Request, res: Response) {
+    try {
+      const minPrice = parseFloat(req.query.minPrice!.toString());
+
+      const products = await ProductUseCases.listProductsAbovePrice(minPrice);
+      res.json(products);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Error listing products above a specified price" });
+    }
+  }
+
+  async listProductsByDescription(req: Request, res: Response) {
+    try {
+      const keyword = req.query.keyword?.toString();
+      const products = await ProductUseCases.listProductsByDescription(
+        keyword!
+      );
+      res.json(products);
+    } catch (error) {
+      res
+        .status(500)
+        .json({ error: "Error listing products by description keyword" });
+    }
+  }
 }
 
 export default new ProductController();

@@ -2,6 +2,8 @@ import express from "express";
 import ProductController from "./modules/product/controller/ProductController";
 import {
   createProductValidator,
+  listProductsAbovePriceValidator,
+  listProductsByDescriptionValidator,
   productIdValidator,
   updateProductValidator,
 } from "./modules/product/validators/ProductValidator";
@@ -16,7 +18,19 @@ router.post(
   ProductController.createProduct
 );
 
+router.get(
+  "/products/price",
+  listProductsAbovePriceValidator,
+  ProductController.listProductsAbovePrice
+);
+
 router.get("/products", ProductController.listProducts);
+
+router.get(
+  "/products/description",
+  listProductsByDescriptionValidator,
+  ProductController.listProductsByDescription
+);
 
 router.get(
   "/products/:id",

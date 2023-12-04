@@ -27,10 +27,34 @@ const productIdValidator = celebrate({
   }),
 });
 
+const minPriceValidator = Joi.object().keys({
+  minPrice: Joi.number().min(0).required(),
+});
+
+const listProductsAbovePriceValidator = celebrate({
+  [Segments.QUERY]: minPriceValidator,
+});
+
+const { swagger: listProductsAbovePriceSwagger } = j2s(minPriceValidator);
+
+const keywordValidator = Joi.object().keys({
+  keyword: Joi.string().required(),
+});
+
+const listProductsByDescriptionValidator = celebrate({
+  [Segments.QUERY]: keywordValidator,
+});
+
+const { swagger: listProductsByDescriptionSwagger } = j2s(keywordValidator);
+
 export {
   createProductValidator,
   createProductSwagger,
   updateProductValidator,
   updateProductSwagger,
   productIdValidator,
+  listProductsAbovePriceValidator,
+  listProductsAbovePriceSwagger,
+  listProductsByDescriptionValidator,
+  listProductsByDescriptionSwagger,
 };

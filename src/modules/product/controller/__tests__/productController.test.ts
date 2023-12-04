@@ -21,8 +21,6 @@ describe("ProductController", () => {
       .set("Content-Type", "application/json")
       .set("Accept", "application/json");
 
-    console.log(response.body.product);
-
     expect(response.status).toBe(201);
     expect(response.body.product).toHaveProperty("name", "Test Product");
   });

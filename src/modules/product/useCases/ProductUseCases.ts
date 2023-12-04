@@ -1,7 +1,8 @@
 import { IProduct } from "../dtos/IProduct.dto";
 import { ProductModel as Product } from "../entities/Product";
+import { IProductRepository } from "../repositories/IProductRepository";
 
-class ProductUseCases {
+class ProductUseCases implements IProductRepository {
   async createProduct(productData: IProduct): Promise<IProduct> {
     return Product.create(productData);
   }
@@ -28,6 +29,14 @@ class ProductUseCases {
     }
 
     return response;
+  }
+
+  async listProductsAbovePrice(minPrice: number): Promise<IProduct[]> {
+    return Product.find({ price: { $gt: minPrice } });
+  }
+
+  async listProductsByDescription(keyword: string): Promise<IProduct[]> {
+    return Product.find({ description: { $regex: new RegExp(keyword, "i") } });
   }
 }
 
