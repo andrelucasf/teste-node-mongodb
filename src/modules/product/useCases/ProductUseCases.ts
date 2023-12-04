@@ -14,15 +14,20 @@ class ProductUseCases {
     return Product.findById(productId);
   }
 
-  async updateProduct(
-    productId: string,
-    productData: IProduct
-  ): Promise<IProduct | null> {
-    return Product.findByIdAndUpdate(productId, productData, { new: true });
+  async updateProduct(productData: IProduct): Promise<IProduct | null> {
+    return Product.findByIdAndUpdate(productData.id, productData, {
+      new: true,
+    });
   }
 
-  async deleteProduct(productId: string): Promise<void> {
-    await Product.findByIdAndDelete(productId);
+  async deleteProduct(productId: string): Promise<IProduct> {
+    const response = await Product.findByIdAndDelete(productId).lean();
+
+    if (!response || response === null) {
+      throw new Error("Product not found");
+    }
+
+    return response;
   }
 }
 

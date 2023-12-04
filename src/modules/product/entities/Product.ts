@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 import { IProduct } from "../dtos/IProduct.dto";
 
 const ProductSchema = new Schema({
@@ -7,4 +7,4 @@ const ProductSchema = new Schema({
   description: { type: String, required: true },
 });
 
-export const ProductModel = mongoose.model<IProduct>("Product", ProductSchema);
+export const ProductModel = model<IProduct>("Product", ProductSchema);
